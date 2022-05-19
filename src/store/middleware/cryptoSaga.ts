@@ -19,7 +19,13 @@ export function* fetchCryptoSaga() {
   yield put(cryptoActions.startCryptoLoading(true));
   try {
     const response: ResponseCrypto = yield call(getData);
+
+    /* should be only one action */
     yield put(cryptoActions.fetchCrypto(response));
+    /*  */
+
+    /* Missing data successsfully */
+
     yield put(cryptoActions.endCryptoLoading(false));
   } catch (e) {
     if (e instanceof Error) {

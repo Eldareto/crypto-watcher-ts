@@ -3,6 +3,7 @@ import Table from './Table';
 
 function Crypto() {
   const crypto = useSelector((state) => state.cryptoReducer.data);
+
   return (
     <div>
       {crypto.length > 0 ? (

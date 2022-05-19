@@ -46,6 +46,7 @@ export interface SortTable {
   sortDirection: string;
 }
 
+/* Redux */
 export interface CryptoState {
   loading: boolean;
   data: Crypto[];

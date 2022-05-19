@@ -1,20 +1,29 @@
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+
+/* Redux */
+import { useDispatch } from 'react-redux';
+
+/* Components */
 import Header from './components/Header';
 import Crypto from './components/Crypto';
 import Home from './components/Home';
 import Watchlist from './components/Watchlist';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchCryptoRequest } from './store/actions/cryptoActions';
+
+/* Actions */
+import * as cryptoActions from './store/actions/cryptoActions';
 
 function App() {
   const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(fetchCryptoRequest());
+    dispatch(cryptoActions.fetchCryptoRequest());
   });
+
   return (
     <div className='App'>
       <Header></Header>
+
       <Routes>
         <Route path='*' element={<Home />} />
         <Route path='/crypto' element={<Crypto />} />

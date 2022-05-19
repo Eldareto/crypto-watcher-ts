@@ -1,35 +1,40 @@
+import { FC } from 'react';
+
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addCryptoToWatchlist,
   removeCryptoFromWatchlist,
   sortTable,
 } from '../store/actions/cryptoActions';
+import { TableProps } from './Table.type';
 
-export default function Table(props: any) {
+const Table: FC<TableProps> = ({ toDraw }) => {
+  const dispatch = useDispatch();
+
   const sortBy = useSelector((state) => state.cryptoReducer.sortBy);
-  const sortDirection = useSelector(
-    (state) => state.cryptoReducer.sortDirection
+  const sortDirection = useSelector((state) => state.cryptoReducer.sortDirection);
+
+  /* TODO: Fix the condition */
+  const watched = useSelector((state) =>
+    state.cryptoReducer.watchlist.length > 0
+      ? state.cryptoReducer.watchlist
+      : []
   );
 
-  const sorted = props.toDraw.sort((a: any, b: any) => {
+  const sorted = toDraw.sort((a: any, b: any) => {
     if (sortDirection === 'asc') {
       return a[sortBy] - b[sortBy];
     }
     return b[sortBy] - a[sortBy];
   });
 
-  const dispatch = useDispatch();
-
-  const watched = useSelector((state) =>
-    state.cryptoReducer.watchlist.length > 0
-      ? state.cryptoReducer.watchlist
-      : []
-  );
   const handleChange = (id: string) => {
     !watched.includes(id)
       ? dispatch(addCryptoToWatchlist(id))
       : dispatch(removeCryptoFromWatchlist(id));
   };
+
+  /* The place of it is not here :: insert into type */
   const keys = [
     'name',
     'symbol',
@@ -38,6 +43,7 @@ export default function Table(props: any) {
     'vwap24Hr',
     'rank',
   ];
+
   return (
     <table>
       <thead>
@@ -65,6 +71,7 @@ export default function Table(props: any) {
           ))}
         </tr>
       </thead>
+
       <tbody>
         {sorted.map((ele: any) => {
           return (
@@ -92,3 +99,5 @@ export default function Table(props: any) {
     </table>
   );
 }
+
+export default Table;
