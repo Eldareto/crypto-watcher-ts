@@ -1,21 +1,21 @@
-import { Crypto } from '../../models/crypto';
+import { CryptoType } from '../../models/crypto';
 import { cryptoTypes } from '../actionTypes/actionTypes';
 
 export interface FetchCryptoRequest {
   type: typeof cryptoTypes.FETCH_CRYPTO_REQUEST;
 }
 
-export interface FetchCryptoSuccessPayload {
-  data: Crypto[];
+export interface GetCryptoDataPayload {
+  data: CryptoType[];
 }
 
 export interface FetchCryptoFailPayload {
   error: string;
 }
 
-export interface FetchCryptoSuccess {
-  type: typeof cryptoTypes.FETCH_CRYPTO_SUCCESS;
-  payload: FetchCryptoSuccessPayload;
+export interface GetCryptoData {
+  type: typeof cryptoTypes.GET_CRYPTO_DATA;
+  payload: GetCryptoDataPayload;
 }
 
 export interface FetchCryptoFail {
@@ -29,9 +29,7 @@ export interface AddCryptoToWatchlist {
 }
 
 export interface HandleLoading {
-  type:
-    | typeof cryptoTypes.START_CRYPTO_LOADING
-    | typeof cryptoTypes.END_CRYPTO_LOADING;
+  type: typeof cryptoTypes.START_LOADING | typeof cryptoTypes.END_LOADING;
   flag: boolean;
 }
 
@@ -49,7 +47,7 @@ export interface SortTable {
 /* Redux */
 export interface CryptoState {
   loading: boolean;
-  data: Crypto[];
+  data: CryptoType[];
   watchlist: string[];
   error: string | null;
   isFetchCryptoSuccess: boolean;

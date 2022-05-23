@@ -16,21 +16,21 @@ async function getData() {
 }
 
 export function* fetchCryptoSaga() {
-  yield put(cryptoActions.startCryptoLoading(true));
+  yield put(cryptoActions.toggleLoading(true));
   try {
     const response: ResponseCrypto = yield call(getData);
 
     /* should be only one action */
-    yield put(cryptoActions.fetchCrypto(response));
+    yield put(cryptoActions.getCryptoData(response));
     /*  */
 
     /* Missing data successsfully */
 
-    yield put(cryptoActions.endCryptoLoading(false));
+    yield put(cryptoActions.toggleLoading(false));
   } catch (e) {
     if (e instanceof Error) {
       yield put(cryptoActions.fetchCryptoFail({ error: e.message }));
-      yield put(cryptoActions.endCryptoLoading(false));
+      yield put(cryptoActions.toggleLoading(false));
     }
   }
 }

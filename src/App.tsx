@@ -5,10 +5,10 @@ import { Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 /* Components */
-import Header from './components/Header';
-import Crypto from './components/Crypto';
-import Home from './components/Home';
-import Watchlist from './components/Watchlist';
+import Header from './components/Header/Header';
+import Crypto from './components/Crypto/Crypto';
+import Home from './components/Home/Home';
+import Watchlist from './components/Watchlist/Watchlist';
 
 /* Actions */
 import * as cryptoActions from './store/actions/cryptoActions';

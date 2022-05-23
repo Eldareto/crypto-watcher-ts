@@ -4,7 +4,5 @@ import 'react-redux';
 import { ReduxRootState } from '../store/reducers/index';
 
 declare module 'react-redux' {
-  export declare const useSelector: <T>(
-    selector: (state: GlobalState) => T
-  ) => T;
+  export declare const useSelector: <T>(selector: (state: GlobalState) => T) => T;
 }

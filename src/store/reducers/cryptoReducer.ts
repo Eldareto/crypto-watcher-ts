@@ -12,7 +12,7 @@ const initialState = {
   ...initCryptoState,
 };
 
-export const fetchCryptoSuccess = (state: CryptoState, action: AnyAction) => {
+export const getCryptoData = (state: CryptoState, action: AnyAction) => {
   return updateObj(state, {
     data: action.payload.data,
     error: null,
@@ -25,7 +25,7 @@ export const fetchCryptoFail = (state: CryptoState, action: AnyAction) => {
   });
 };
 
-export const handleCryptoLoading = (state: CryptoState, action: AnyAction) => {
+export const toggleLoading = (state: CryptoState, action: AnyAction) => {
   return updateObj<CryptoState, any>(state, {
     loading: action.flag,
   });
@@ -37,10 +37,7 @@ export const addCryptoToWatchlist = (state: CryptoState, action: AnyAction) => {
   });
 };
 
-export const removeCryptoFromWatchlist = (
-  state: CryptoState,
-  action: AnyAction
-) => {
+export const removeCryptoFromWatchlist = (state: CryptoState, action: AnyAction) => {
   return updateObj<CryptoState, any>(state, {
     watchlist: state.watchlist.filter((id) => id !== action.id),
   });
@@ -55,28 +52,28 @@ export const sortTable = (state: CryptoState, action: AnyAction) => {
 
 const cryptoReducer = (state: CryptoState = initialState, action: AnyAction) => {
   switch (action.type) {
-    case cryptoTypes.START_CRYPTO_LOADING:
-      return handleCryptoLoading(state, action);
-    
-      case cryptoTypes.END_CRYPTO_LOADING:
-      return handleCryptoLoading(state, action);
-    
-      case cryptoTypes.FETCH_CRYPTO_SUCCESS:
-      return fetchCryptoSuccess(state, action);
-    
-      case cryptoTypes.FETCH_CRYPTO_FAIL:
+    case cryptoTypes.START_LOADING:
+      return toggleLoading(state, action);
+
+    case cryptoTypes.END_LOADING:
+      return toggleLoading(state, action);
+
+    case cryptoTypes.GET_CRYPTO_DATA:
+      return getCryptoData(state, action);
+
+    case cryptoTypes.FETCH_CRYPTO_FAIL:
       return fetchCryptoFail(state, action);
-    
-      case cryptoTypes.ADD_CRYPTO_TO_WATCHLIST:
+
+    case cryptoTypes.ADD_CRYPTO_TO_WATCHLIST:
       return addCryptoToWatchlist(state, action);
-    
-      case cryptoTypes.REMOVE_CRYPTO_FROM_WATCHLIST:
+
+    case cryptoTypes.REMOVE_CRYPTO_FROM_WATCHLIST:
       return removeCryptoFromWatchlist(state, action);
-    
-      case cryptoTypes.SORT_TABLE_ACTION:
+
+    case cryptoTypes.SORT_TABLE_ACTION:
       return sortTable(state, action);
-    
-      default:
+
+    default:
       return state;
   }
 };

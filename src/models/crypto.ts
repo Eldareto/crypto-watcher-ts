@@ -1,4 +1,4 @@
-export interface Crypto {
+export interface CryptoType {
   changePercent24Hr: string;
   explorer: string;
   id: string;
@@ -15,5 +15,5 @@ export interface Crypto {
 
 //!!!!!! have to check this later !!!!!!!!!!!!!!
 export interface ResponseCrypto {
-  data: Crypto[];
+  data: CryptoType[];
 }
