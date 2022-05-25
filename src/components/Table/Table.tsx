@@ -1,18 +1,17 @@
-import { FC } from 'react';
+import { FC, ReactElement } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { addCryptoToWatchlist, removeCryptoFromWatchlist, sortTable } from '../../store/actions/cryptoActions';
 import { TableProps, TableKeys } from './Table.type';
 
-import { sortArr } from '../../store/utilities/utils';
+import { sortArr } from '../../utilities/utils';
 
-const Table: FC<TableProps> = ({ toDraw }) => {
+const Table: FC<TableProps> = ({ toDraw }): ReactElement => {
   const dispatch = useDispatch();
 
   const sortBy = useSelector((state) => state.cryptoReducer.sortBy);
   const sortDirection = useSelector((state) => state.cryptoReducer.sortDirection);
 
-  /* TODO: Fix the condition */
   const watchlist = useSelector((state) => state.cryptoReducer.watchlist);
 
   const sorted = sortArr(toDraw, sortBy, sortDirection);

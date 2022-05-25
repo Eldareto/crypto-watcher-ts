@@ -9,7 +9,7 @@ export interface GetCryptoDataPayload {
   data: CryptoType[];
 }
 
-export interface FetchCryptoFailPayload {
+export interface GetCryptoFailPayload {
   error: string;
 }
 
@@ -18,9 +18,14 @@ export interface GetCryptoData {
   payload: GetCryptoDataPayload;
 }
 
-export interface FetchCryptoFail {
-  type: typeof cryptoTypes.FETCH_CRYPTO_FAIL;
-  payload: FetchCryptoFailPayload;
+export interface GetCryptoSuccess {
+  type: typeof cryptoTypes.GET_CRYPTO_SUCCESS;
+  payload: null;
+}
+
+export interface GetCryptoFail {
+  type: typeof cryptoTypes.GET_CRYPTO_FAIL;
+  payload: GetCryptoFailPayload;
 }
 
 export interface AddCryptoToWatchlist {

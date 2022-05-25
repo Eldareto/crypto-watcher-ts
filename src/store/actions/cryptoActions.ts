@@ -10,12 +10,18 @@ export const getCryptoData = (payload: cryptoInterfaces.GetCryptoDataPayload): c
   payload,
 });
 
-export const fetchCryptoFail = (payload: cryptoInterfaces.FetchCryptoFailPayload): cryptoInterfaces.FetchCryptoFail => ({
-  type: cryptoTypes.FETCH_CRYPTO_FAIL,
+export const getCryptoSuccess = (payload: null): cryptoInterfaces.GetCryptoSuccess => ({
+  type: cryptoTypes.GET_CRYPTO_SUCCESS,
   payload,
 });
 
-export const toggleLoading = (flag: boolean): cryptoInterfaces.HandleLoading => (flag ? { type: cryptoTypes.START_LOADING, flag } : { type: cryptoTypes.END_LOADING, flag });
+export const getCryptoFail = (payload: cryptoInterfaces.GetCryptoFailPayload): cryptoInterfaces.GetCryptoFail => ({
+  type: cryptoTypes.GET_CRYPTO_FAIL,
+  payload,
+});
+
+export const toggleLoading = (flag: boolean): cryptoInterfaces.HandleLoading =>
+  flag ? { type: cryptoTypes.START_LOADING, flag } : { type: cryptoTypes.END_LOADING, flag };
 
 export const addCryptoToWatchlist = (id: string): cryptoInterfaces.AddCryptoToWatchlist => ({
   type: cryptoTypes.ADD_CRYPTO_TO_WATCHLIST,

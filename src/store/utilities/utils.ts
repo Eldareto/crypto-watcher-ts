@@ -1,39 +1,6 @@
-import { CryptoType } from '../../models/crypto';
-
 export const updateObj = <S, U>(state: S, updateStateProps: U) => {
   return {
     ...state,
     ...updateStateProps,
   };
-};
-
-export const sortArr = (toDraw: CryptoType[], sortBy: string, sortDirection: string) => {
-  return [...toDraw].sort((a: any, b: any) => {
-    if (isNaN(Number(a[sortBy]))) {
-      let x = a[sortBy] !== null ? a[sortBy].toLowerCase() : '';
-      let y = b[sortBy] !== null ? b[sortBy].toLowerCase() : '';
-      if (sortDirection === 'asc') {
-        if (x < y) {
-          return -1;
-        }
-        if (x > y) {
-          return 1;
-        }
-        return 0;
-      } else {
-        if (x > y) {
-          return -1;
-        }
-        if (x < y) {
-          return 1;
-        }
-        return 0;
-      }
-    } else {
-      if (sortDirection === 'asc') {
-        return a[sortBy] - b[sortBy];
-      }
-      return b[sortBy] - a[sortBy];
-    }
-  });
 };

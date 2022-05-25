@@ -1,6 +1,7 @@
+import { FC, ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 
-export default function Header() {
+const Header: FC = (): ReactElement => {
   return (
     <nav>
       <NavLink to='/'>Home</NavLink>
@@ -8,4 +9,6 @@ export default function Header() {
       <NavLink to='/watchlist'>Watchlist</NavLink>
     </nav>
   );
-}
+};
+
+export default Header;

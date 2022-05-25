@@ -24,12 +24,12 @@ export function* fetchCryptoSaga() {
     yield put(cryptoActions.getCryptoData(response));
     /*  */
 
-    /* Missing data successsfully */
+    yield put(cryptoActions.getCryptoSuccess(null));
 
     yield put(cryptoActions.toggleLoading(false));
   } catch (e) {
     if (e instanceof Error) {
-      yield put(cryptoActions.fetchCryptoFail({ error: e.message }));
+      yield put(cryptoActions.getCryptoFail({ error: e.message }));
       yield put(cryptoActions.toggleLoading(false));
     }
   }

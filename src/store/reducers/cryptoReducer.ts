@@ -19,7 +19,13 @@ export const getCryptoData = (state: CryptoState, action: AnyAction) => {
   });
 };
 
-export const fetchCryptoFail = (state: CryptoState, action: AnyAction) => {
+export const getCryptoSuccess = (state: CryptoState, action: AnyAction) => {
+  return updateObj<CryptoState, any>(state, {
+    error: null,
+  });
+};
+
+export const getCryptoFail = (state: CryptoState, action: AnyAction) => {
   return updateObj<CryptoState, any>(state, {
     error: action.payload,
   });
@@ -61,8 +67,11 @@ const cryptoReducer = (state: CryptoState = initialState, action: AnyAction) => 
     case cryptoTypes.GET_CRYPTO_DATA:
       return getCryptoData(state, action);
 
-    case cryptoTypes.FETCH_CRYPTO_FAIL:
-      return fetchCryptoFail(state, action);
+    case cryptoTypes.GET_CRYPTO_SUCCESS:
+      return getCryptoSuccess(state, action);
+
+    case cryptoTypes.GET_CRYPTO_FAIL:
+      return getCryptoFail(state, action);
 
     case cryptoTypes.ADD_CRYPTO_TO_WATCHLIST:
       return addCryptoToWatchlist(state, action);
