@@ -10,7 +10,7 @@ export const getCryptoData = (payload: cryptoInterfaces.GetCryptoDataPayload): c
   payload,
 });
 
-export const getCryptoSuccess = (payload: null): cryptoInterfaces.GetCryptoSuccess => ({
+export const getCryptoSuccess = (payload: boolean): cryptoInterfaces.GetCryptoSuccess => ({
   type: cryptoTypes.GET_CRYPTO_SUCCESS,
   payload,
 });

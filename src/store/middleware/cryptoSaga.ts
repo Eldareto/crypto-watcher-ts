@@ -6,7 +6,6 @@ async function getData() {
   let response: ResponseCrypto;
   try {
     response = await (await fetch('https://api.coincap.io/v2/assets')).json();
-    console.log(response);
     return response;
   } catch (error) {
     console.log('====================================');
@@ -17,20 +16,19 @@ async function getData() {
 
 export function* fetchCryptoSaga() {
   yield put(cryptoActions.toggleLoading(true));
+
   try {
     const response: ResponseCrypto = yield call(getData);
 
-    /* should be only one action */
     yield put(cryptoActions.getCryptoData(response));
-    /*  */
-
-    yield put(cryptoActions.getCryptoSuccess(null));
-
+    yield put(cryptoActions.getCryptoSuccess(true));
     yield put(cryptoActions.toggleLoading(false));
+
   } catch (e) {
     if (e instanceof Error) {
       yield put(cryptoActions.getCryptoFail({ error: e.message }));
       yield put(cryptoActions.toggleLoading(false));
+      yield put(cryptoActions.getCryptoSuccess(false));
     }
   }
 }

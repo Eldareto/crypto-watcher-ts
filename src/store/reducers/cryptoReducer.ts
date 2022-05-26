@@ -6,7 +6,7 @@ import { updateObj } from '../utilities/utils';
 
 /* Types */
 import { cryptoTypes } from '../actionTypes/actionTypes';
-import { CryptoState } from '../interfaces/crypto.type';
+import { CryptoState, CryptoSuccess } from '../interfaces/crypto.type';
 
 const initialState = {
   ...initCryptoState,
@@ -20,8 +20,8 @@ export const getCryptoData = (state: CryptoState, action: AnyAction) => {
 };
 
 export const getCryptoSuccess = (state: CryptoState, action: AnyAction) => {
-  return updateObj<CryptoState, any>(state, {
-    error: null,
+  return updateObj<CryptoState, CryptoSuccess>(state, {
+    isFetchCryptoSuccess: action.payload,
   });
 };
 

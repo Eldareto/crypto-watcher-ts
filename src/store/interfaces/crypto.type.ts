@@ -20,7 +20,10 @@ export interface GetCryptoData {
 
 export interface GetCryptoSuccess {
   type: typeof cryptoTypes.GET_CRYPTO_SUCCESS;
-  payload: null;
+  payload: boolean;
+}
+export interface CryptoSuccess {
+  isFetchCryptoSuccess: boolean;
 }
 
 export interface GetCryptoFail {
