@@ -6,14 +6,22 @@ import { updateObj } from '../utilities/utils';
 
 /* Types */
 import { cryptoTypes } from '../actionTypes/actionTypes';
-import { CryptoState, CryptoSuccess } from '../interfaces/crypto.type';
+import {
+  SortedTable,
+  ToggleWatchlistItem,
+  ToggleLoading,
+  CryptoFail,
+  CryptoState,
+  CryptoSuccess,
+  GetCrypto
+} from '../interfaces/crypto.type';
 
 const initialState = {
   ...initCryptoState,
 };
 
 export const getCryptoData = (state: CryptoState, action: AnyAction) => {
-  return updateObj(state, {
+  return updateObj<CryptoState, GetCrypto>(state, {
     data: action.payload.data,
     error: null,
   });
@@ -26,31 +34,31 @@ export const getCryptoSuccess = (state: CryptoState, action: AnyAction) => {
 };
 
 export const getCryptoFail = (state: CryptoState, action: AnyAction) => {
-  return updateObj<CryptoState, any>(state, {
+  return updateObj<CryptoState, CryptoFail>(state, {
     error: action.payload,
   });
 };
 
 export const toggleLoading = (state: CryptoState, action: AnyAction) => {
-  return updateObj<CryptoState, any>(state, {
+  return updateObj<CryptoState, ToggleLoading>(state, {
     loading: action.flag,
   });
 };
 
 export const addCryptoToWatchlist = (state: CryptoState, action: AnyAction) => {
-  return updateObj<CryptoState, any>(state, {
+  return updateObj<CryptoState, ToggleWatchlistItem>(state, {
     watchlist: state.watchlist.concat(action.id),
   });
 };
 
 export const removeCryptoFromWatchlist = (state: CryptoState, action: AnyAction) => {
-  return updateObj<CryptoState, any>(state, {
+  return updateObj<CryptoState, ToggleWatchlistItem>(state, {
     watchlist: state.watchlist.filter((id) => id !== action.id),
   });
 };
 
 export const sortTable = (state: CryptoState, action: AnyAction) => {
-  return updateObj<CryptoState, any>(state, {
+  return updateObj<CryptoState, SortedTable>(state, {
     sortDirection: action.sortDirection,
     sortBy: action.sortBy,
   });

@@ -1,9 +1,12 @@
 import { FC } from 'react';
 
+/* Redux */
 import { useDispatch, useSelector } from 'react-redux';
 
 import { addCryptoToWatchlist, removeCryptoFromWatchlist, sortTable } from '../../store/actions/cryptoActions';
+
 import { TableProps, TableKeys } from './Table.type';
+
 import { sortArr } from '../../utilities/utils';
 
 const Table: FC<TableProps> = ({ toDraw }) => {

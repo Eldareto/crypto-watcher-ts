@@ -22,6 +22,11 @@ export interface GetCryptoSuccess {
   type: typeof cryptoTypes.GET_CRYPTO_SUCCESS;
   payload: boolean;
 }
+
+export interface GetCrypto {
+  data: Crypto[];
+  error: null;
+}
 export interface CryptoSuccess {
   isFetchCryptoSuccess: boolean;
 }
@@ -31,9 +36,8 @@ export interface GetCryptoFail {
   payload: GetCryptoFailPayload;
 }
 
-export interface AddCryptoToWatchlist {
-  type: typeof cryptoTypes.ADD_CRYPTO_TO_WATCHLIST;
-  id: string;
+export interface CryptoFail {
+  error: string;
 }
 
 export interface HandleLoading {
@@ -41,13 +45,29 @@ export interface HandleLoading {
   flag: boolean;
 }
 
+export interface ToggleLoading {
+  loading: boolean;
+}
+
+export interface AddCryptoToWatchlist {
+  type: typeof cryptoTypes.ADD_CRYPTO_TO_WATCHLIST;
+  id: string;
+}
 export interface RemoveCryptoFromWatchlist {
   type: typeof cryptoTypes.REMOVE_CRYPTO_FROM_WATCHLIST;
   id: string;
 }
 
+export interface ToggleWatchlistItem {
+  watchlist: string[];
+}
 export interface SortTable {
   type: typeof cryptoTypes.SORT_TABLE_ACTION;
+  sortBy: string;
+  sortDirection: string;
+}
+
+export interface SortedTable {
   sortBy: string;
   sortDirection: string;
 }

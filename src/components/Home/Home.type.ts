@@ -1,5 +1,5 @@
-export interface HopeProps {}
+export interface HomeProps {}
 
 export const homeTitle = {
-  homeTitle: 'Hello madafaka'
-}
+  homeTitle: 'Hello Hello Hello',
+};

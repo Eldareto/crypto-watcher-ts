@@ -1,12 +1,15 @@
-import { FC, ReactElement } from 'react';
+import { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Header: FC = (): ReactElement => {
+/* Local */
+import { navLinks } from './Header.type';
+
+const Header: FC = () => {
   return (
     <nav>
-      <NavLink to='/'>Home</NavLink>
-      <NavLink to='/crypto'>Crypto</NavLink>
-      <NavLink to='/watchlist'>Watchlist</NavLink>
+      <NavLink to={navLinks.HOME}>Home</NavLink>
+      <NavLink to={navLinks.CRYPTO}>Crypto</NavLink>
+      <NavLink to={navLinks.WATCHLIST}>Watchlist</NavLink>
     </nav>
   );
 };
