@@ -11,9 +11,8 @@ export function* fetchCryptoSaga() {
   yield put(cryptoActions.toggleLoading(true));
 
   try {
-    // const response: ResponseCrypto = yield call(getData);
-    const response: APIResponse<ResponseCrypto> = yield call(fetcher, constantEnv.MAIN_SERVICE, null, Method.POST, false);
-
+    const response: APIResponse<ResponseCrypto> = yield call(fetcher, constantEnv.MAIN_SERVICE, null, Method.GET, false);
+    
     yield put(cryptoActions.getCryptoData(response.data));
     yield put(cryptoActions.getCryptoSuccess(true));
     yield put(cryptoActions.toggleLoading(false));

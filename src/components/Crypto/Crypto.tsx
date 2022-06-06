@@ -4,6 +4,7 @@ import { FC } from 'react';
 import { useSelector } from 'react-redux';
 
 /* Components */
+import Loading from '../Loading/Loading';
 import Table from '../Table/Table';
 
 const Crypto: FC = () => {
@@ -11,7 +12,7 @@ const Crypto: FC = () => {
 
   const loading = useSelector((state) => state.cryptoReducer.loading);
 
-  return <div>{!loading ? <Table toDraw={crypto} /> : <p>Loading...</p>}</div>;
+  return <div>{!loading ? <Table toDraw={crypto} /> : <Loading />}</div>;
 };
 
 export default Crypto;
