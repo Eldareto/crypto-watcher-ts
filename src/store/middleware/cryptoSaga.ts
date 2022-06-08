@@ -1,11 +1,11 @@
 import { call, put } from 'redux-saga/effects';
 import { ResponseCrypto } from '../../models/crypto';
 
-import { fetcher } from '../utilities/fetcher';
+import { fetcher } from '../../utilities/fetcher/fetcher';
 
 import * as cryptoActions from '../actions/cryptoActions';
-import { APIResponse, Method } from '../utilities/global.type';
-import { constantEnv } from '../utilities/globalApiEnv.type';
+import { APIResponse, Method } from '../../utilities/fetcher/global.type';
+import { constantEnv } from '../../utilities/fetcher/globalApiEnv.type';
 
 export function* fetchCryptoSaga() {
   yield put(cryptoActions.toggleLoading(true));
