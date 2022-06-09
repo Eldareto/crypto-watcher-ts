@@ -1,3 +1,117 @@
+/* RESET */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.main-header {
+  background-color: rgb(0, 166, 255);
+  margin-bottom: 2rem;
+}
+
+.main-logo {
+  font-size: 3.5rem;
+  text-align: center;
+  color: white;
+}
+
+.header-nav {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  padding-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.header-nav a {
+  color: white;
+}
+
+.active {
+  text-decoration: underline;
+}
+
+.crypto-table {
+  width: 70%;
+  margin: auto;
+}
+
+.crypto-table th {
+  text-align: left;
+}
+
+.sort-button {
+  display: inline-block;
+  margin-left: 0.3rem;
+  border: 0;
+  background: none;
+  color: rgb(105, 105, 105);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.sort-button:hover {
+  color: rgb(255, 0, 68);
+}
+
+
 .sort-desc {
   transform: rotate(-90deg);
 }

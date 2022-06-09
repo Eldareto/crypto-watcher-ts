@@ -24,29 +24,31 @@ const Table: FC<TableProps> = ({ toDraw }) => {
   };
 
   return (
-    <table>
+    <table className='crypto-table'>
       <thead>
         <tr>
           <th></th>
           {keys.map((item) => (
-            <th key={item}>
+            <th
+              className={'col-' + (keys.indexOf(item) + 1)}
+              key={item}>
               {item}
-              <button
-                className='sort-asc'
+              <span
+                className='sort-asc sort-button'
                 onClick={() => {
                   dispatch(sortTable(item, 'asc'));
                 }}
               >
                 &gt;
-              </button>
-              <button
-                className='sort-desc'
+              </span>
+              <span
+                className='sort-desc sort-button'
                 onClick={() => {
                   dispatch(sortTable(item, 'desc'));
                 }}
               >
                 &gt;
-              </button>
+              </span>
             </th>
           ))}
         </tr>
@@ -66,7 +68,9 @@ const Table: FC<TableProps> = ({ toDraw }) => {
                 ></input>
               </td>
               {keys.map((item) => {
-                return <td key={ele.id + item}>{ele[item]}</td>;
+                return <td
+                  className={'col-' + (keys.indexOf(item) + 1)}
+                  key={ele.id + item}>{ele[item]}</td>;
               })}
             </tr>
           );
