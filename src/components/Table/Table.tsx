@@ -57,7 +57,7 @@ const Table: FC<TableProps> = ({ toDraw }) => {
       <tbody>
         {sorted.map((ele: any) => {
           return (
-            <tr key={ele.id}>
+            <tr className='table-row' key={ele.id}>
               <td>
                 <input
                   type='checkbox'
